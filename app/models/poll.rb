@@ -5,6 +5,6 @@ class Poll < ApplicationRecord
   validates :question, presence: true, uniqueness: true
 
   belongs_to :user
-  # has_many :votes, dependent: :destroy
-  # has_many :voters, through: :votes, source: :user
+  has_many :votes, dependent: :destroy
+  has_many :voters, through: :votes, source: :user
 end
