@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  # get "test", to: "sessions#is_logged_in?"
-  resources :users, only: %i[create show index]
-  resources :sessions, only: %i[create destroy]
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+  delete '/user/delete', to: 'users#destroy'
+  resources :users, only: %i[create index show]
+  resources :polls, only: %i[create index show destroy]
 end

@@ -16,7 +16,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized_user?
-
     @user == current_user
   end
 

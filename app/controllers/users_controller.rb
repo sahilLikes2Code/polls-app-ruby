@@ -23,10 +23,22 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!
-
-      render status: :ok, json: {notice: 'User was created successfully'}
+      render status: :ok, json: {notice: 'User created successfully'}
     else
       render status: :unprocessable_entity, json: {errors: @user.errors.full_messages}
+    end
+  end
+
+  def destroy
+    if current_user.present?
+      current_user.destroy
+      logout!
+      render json: {
+          status: 200,
+          message: "User and all user related data deleted successfully"
+      }
+    else
+      render status: :not_found, json: {errors: "Either not logged in or no user found"}
     end
   end
 
