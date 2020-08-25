@@ -2,25 +2,31 @@ class PollsController < ApplicationController
 
 
   def index
+    puts 'userrr id'
+    puts current_user.id
+    puts 'userrr id'
     @polls = Poll.all
-    if @polls
-      render status: :ok, json: {polls: @polls}
-    else
-      render status: :not_found, json: {errors: ["No polls found"]}
-    end
+    # if @polls
+    #   render status: :ok, json: {polls: @polls}, view_renderer
+    #   # render
+    # else
+    #   render status: :not_found, json: {errors: ["No polls found"]}
+    # end
+    # jbuilder
   end
+
 
   def create
     if logged_in?
       @poll = Poll.new(poll_params)
       @poll[:user_id] = current_user.id
       if @poll.save
-        render status: :ok, json: {notice: 'Poll was created successfully'}
+        render status: :ok, json: {notice: 'Poll created successfully'}
       else
         render status: :unprocessable_entity, json: {errors: @poll.errors.full_messages}
       end
     else
-      render status: :bad_request, json: {errors: "User not logged in"}
+      render status: :bad_request, json: {errors: ["User not logged in"]}
     end
   end
 

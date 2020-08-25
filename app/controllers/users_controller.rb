@@ -10,6 +10,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def new
+    render
+  end
+
   def show
     @user = User.find_by_id(params[:id])
     if @user
@@ -45,6 +49,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 end
