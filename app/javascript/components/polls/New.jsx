@@ -28,6 +28,7 @@ class New extends Component {
   };
 
   setOption = ({target: {name, value}}) => {
+    //Fixme, name is being passed to pass index. Try to set a better way of achieving this
     this.setState({
       poll: {
         ...this.state.poll,
@@ -48,13 +49,9 @@ class New extends Component {
       },
       onError: () => {
         this.setState({
-          errors: ['Invalid credentials, Please try again'],
+          errors: ['Please enter a question with four options'],
           type: 'danger',
         });
-        // window.location.href = Routes.login_path()
-        setTimeout(function () {
-          window.location.href = Routes.login_path();
-        }, 2000)
       },
       onSuccess: (response) => {
         this.setState({message: response.messages});

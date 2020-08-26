@@ -4,6 +4,7 @@ json.polls @polls do |poll|
   json.poll_id poll.id
   json.voter_ids poll.voter_ids
   json.total_votes poll.votes.count
-  json.current_user current_user
+  json.username current_user.username
+  json.user_id current_user.id
   json.logged_in logged_in?
 end

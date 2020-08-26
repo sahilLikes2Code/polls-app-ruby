@@ -1,4 +1,6 @@
 class Poll < ApplicationRecord
+  before_save { question.capitalize! }
+
   has_many :options, dependent: :destroy
   accepts_nested_attributes_for :options
   validates_length_of :options, minimum: 4, maximum: 4

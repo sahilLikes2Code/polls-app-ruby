@@ -24,5 +24,9 @@ class ApplicationController < ActionController::Base
     session.clear
   end
 
+  # def already_voted?(poll)
+  #   poll.voter_ids.include?(current_user.id)
+  # end
+
 end
 

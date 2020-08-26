@@ -1,10 +1,8 @@
 class PollsController < ApplicationController
 
-
   def index
-    puts 'currenttt'
-    puts @current_user
     @polls = Poll.all
+    puts @polls.inspect
   end
 
   def new
@@ -35,6 +33,7 @@ class PollsController < ApplicationController
       render status: :ok, json: {poll: @poll}
     else
       render status: :not_found, json: {errors: ["Poll not found"]}
+
     end
   end
 

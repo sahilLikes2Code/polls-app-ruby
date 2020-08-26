@@ -14,6 +14,10 @@ class Navbarout extends React.Component {
       fetchApi({
         url: Routes.logout_path(),
         method: 'DELETE',
+        onError: response => {
+        },
+        onSuccess: response => {
+        },
         successCallBack: () => {
           window.location.replace(Routes.login_path());
         }
@@ -22,20 +26,19 @@ class Navbarout extends React.Component {
   }
 
   render() {
-    const {username} = this.props.user;
+
     return (
       <div>
         <nav className="navbar navbar-dark bg-info">
           <a className="navbar-brand" href={Routes.polls_path()}>
             Pollz
           </a>
-          <a className="navbar-brand" href={Routes.create_polls_path()}
-             style={{marginRight: "100"}}>
-            Create new poll
+          <a className="navbar-brand" href={Routes.create_polls_path()}>
+            Create a new poll
           </a>
           <div className="nav justify-content-end">
             <a className="navbar-brand">
-              {username}
+              {this.props.username}
             </a>
             <a
               type="submit"

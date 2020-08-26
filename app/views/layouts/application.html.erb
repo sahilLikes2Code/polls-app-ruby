@@ -10,7 +10,7 @@
 
 <body>
 <% if logged_in? %>
-    <%= react_component "navigation/Navbarout", {user: current_user} %>
+    <%= react_component "navigation/Navbarout", {username: (current_user.username).capitalize} %>
 <% else %>
     <%= react_component "navigation/Navbarin" %>
 <% end %>
