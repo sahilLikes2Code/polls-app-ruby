@@ -27,13 +27,10 @@ class Poll extends Component {
       },
     });
     // window.location.href = Routes.polls_path();
-    // console.log(this.state)
   }
 
 
   handleClick = async (e) => {
-    console.log(this.props.props.poll_id,)
-    console.log(e.target.value)
 
     await this.setState({
       vote: {
@@ -41,7 +38,7 @@ class Poll extends Component {
         option_id: Number(e.target.value),
       }
     })
-    console.log(this.state)
+
     fetchApi({
       url: Routes.votes_path(),
       method: "POST",
@@ -51,7 +48,6 @@ class Poll extends Component {
       onError: this.handleError,
       onSuccess: (response) => {
         this.setState({message: response.messages});
-        console.log(this.state)
       },
       // successCallBack: () => {
       //   window.location.href = Routes.home_path();

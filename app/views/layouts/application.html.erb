@@ -9,6 +9,14 @@
 </head>
 
 <body>
+<% if logged_in? %>
+    <%= react_component "navigation/Navbarout", {user: current_user} %>
+<% else %>
+    <%= react_component "navigation/Navbarin" %>
+<% end %>
+<% unless flash.empty? %>
+    <%= react_component('shared/Flash', flash: flash, prerender: true) %>
+<% end %>
 <%= yield %>
 </body>
 </html>

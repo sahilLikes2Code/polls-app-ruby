@@ -3,7 +3,7 @@ import {fetchApi} from "../../utils/API";
 import * as Routes from "../../utils/Routes";
 import Errors from "../shared/Error";
 
-class Login extends React.Component {
+class New extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -34,13 +34,14 @@ class Login extends React.Component {
       },
       onError: () => {
         this.setState({errors: ['Invalid credentials, Please try again'], type: 'danger',});
+        // window.location.href = Routes.login_path()
         setTimeout(function (){window.location.href = Routes.login_path();}, 2000)
       },
       onSuccess: (response) => {
         this.setState({message: response.messages});
       },
       successCallBack: () => {
-        window.location.href = Routes.polls_path();
+        window.location.href = Routes.polls_path()
       },
     });
   };
@@ -107,4 +108,4 @@ class Login extends React.Component {
 }
 
 
-export default Login;
+export default New;

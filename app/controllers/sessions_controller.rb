@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
           notice: 'Successfully logged in!'
       }
     else
-      puts "in sessions create fail"
       render status: :unprocessable_entity, json: {errors: ["Incorrect credentials, try again."]}
     end
   end
@@ -36,9 +35,6 @@ class SessionsController < ApplicationController
     if logged_in?
       logout!
       render json: {status: 200, logged_out: true}
-      puts 'sezion'
-      puts session.inspect
-      puts 'sezion'
     else
       render json: {errors: ["already logged out"]}
     end

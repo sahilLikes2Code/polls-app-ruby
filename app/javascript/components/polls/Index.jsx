@@ -2,10 +2,6 @@ import React, {Component} from "react";
 import Poll from "./Poll";
 
 class Index extends Component {
-  // this
-  // props
-  // this
-  // props
 
   constructor(props) {
     super(props);

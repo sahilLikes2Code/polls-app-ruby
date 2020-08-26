@@ -2,17 +2,9 @@ class PollsController < ApplicationController
 
 
   def index
-    puts 'userrr id'
-    puts current_user.id
-    puts 'userrr id'
+    puts 'currenttt'
+    puts @current_user
     @polls = Poll.all
-    # if @polls
-    #   render status: :ok, json: {polls: @polls}, view_renderer
-    #   # render
-    # else
-    #   render status: :not_found, json: {errors: ["No polls found"]}
-    # end
-    # jbuilder
   end
 
 
