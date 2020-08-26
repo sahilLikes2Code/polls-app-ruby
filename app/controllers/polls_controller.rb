@@ -7,6 +7,13 @@ class PollsController < ApplicationController
     @polls = Poll.all
   end
 
+  def new
+    if logged_in?
+      render
+    else
+      redirect_to login_path
+    end
+  end
 
   def create
     if logged_in?
@@ -18,7 +25,7 @@ class PollsController < ApplicationController
         render status: :unprocessable_entity, json: {errors: @poll.errors.full_messages}
       end
     else
-      render status: :bad_request, json: {errors: ["User not logged in"]}
+      redirect_to login_path
     end
   end
 

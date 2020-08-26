@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Routes from "../../utils/Routes"
-import { fetchApi } from '../../utils/API';
+import {fetchApi} from '../../utils/API';
 
 class Navbarout extends React.Component {
   constructor(props) {
@@ -14,10 +14,6 @@ class Navbarout extends React.Component {
       fetchApi({
         url: Routes.logout_path(),
         method: 'DELETE',
-        onError: response => {
-        },
-        onSuccess: response => {
-        },
         successCallBack: () => {
           window.location.replace(Routes.login_path());
         }
@@ -26,26 +22,30 @@ class Navbarout extends React.Component {
   }
 
   render() {
-    const { username } = this.props.user;
+    const {username} = this.props.user;
     return (
       <div>
-        <nav className="navbar navbar-dark bg-primary">
-          <a className="navbar-brand">
+        <nav className="navbar navbar-dark bg-info">
+          <a className="navbar-brand" href={Routes.polls_path()}>
             Pollz
+          </a>
+          <a className="navbar-brand" href={Routes.create_polls_path()}
+             style={{marginRight: "100"}}>
+            Create new poll
           </a>
           <div className="nav justify-content-end">
             <a className="navbar-brand">
               {username}
             </a>
-            <li
+            <a
               type="submit"
               className="navbar-brand"
               onClick={this.handleLogout}>
               Logout
-            </li>
+            </a>
           </div>
         </nav>
-      </div >
+      </div>
     );
   }
 }

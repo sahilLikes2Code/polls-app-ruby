@@ -6,18 +6,14 @@ export function home_path() {
 export function polls_path() {
   return "/polls";
 }
+export function create_polls_path() {
+  return "/polls/new";
+}
 
 export function votes_path() {
   return "/vote";
 }
 
-// export function logout_path() {
-//   return "/logout";
-// }
-//
-// export function login_path() {
-//   return "/login";
-// }
 
 //
 export function tasks_path() {
@@ -50,6 +46,10 @@ export function login_path() {
 
 export function logout_path() {
   return "/logout";
+}
+
+export function signup_path() {
+  return "/users/new";
 }
 
 export function task_comments_path(task_id) {

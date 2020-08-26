@@ -101,9 +101,6 @@ class New extends Component {
                   name="email"
                   onChange={this.handleChange}
                 />
-                <small className="form-text text-muted">
-                  We'll never share your email with anyone else.
-                </small>
               </div>
             </div>
             <div className="form-row">
@@ -132,7 +129,7 @@ class New extends Component {
                 />
               </div>
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-info">
               Sign Up
             </button>
           </form>

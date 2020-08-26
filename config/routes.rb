@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'polls#index'
   resources :users, only: %i[create index show new]
-  resources :polls, only: %i[create index show destroy]
+  resources :polls, only: %i[create index show destroy new]
   resource :vote, only: [:create]
   resource :session, only: [:new, :create]
   get '/login', to: 'sessions#new'

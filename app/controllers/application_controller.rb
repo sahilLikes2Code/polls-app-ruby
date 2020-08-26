@@ -16,9 +16,9 @@ class ApplicationController < ActionController::Base
   end
 
   # fixme, currently not in use
-  # def authorized_user?
-  #   @user == current_user
-  # end
+  def authorized_user?
+    @user == current_user
+  end
 
   def logout!
     session.clear

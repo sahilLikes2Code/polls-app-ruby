@@ -96,8 +96,9 @@ class New extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
+              {/*<div>Don't have an account? Sign up <button style={{background:"none"}} onClick={()=> window.location.href = Routes.signup_path()}>here</button></div>*/}
             </div>
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-info">
               Sign In
             </button>
           </form>

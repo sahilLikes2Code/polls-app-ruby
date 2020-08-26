@@ -16,6 +16,7 @@ class Index extends Component {
 
   render() {
     return <div>
+      <h3 className="py-3">Vote here</h3>
       {this.polls()}
     </div>;
   }

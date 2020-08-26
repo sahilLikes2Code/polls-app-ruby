@@ -73,7 +73,7 @@ class Poll extends Component {
     const {message} = this.state;
     return (
       <div className="container">
-        <h3 className="py-3">Vote here</h3>
+
         {this.displayErrors()}
         {message ? (
           <div className="alert alert-success">{message}</div>
