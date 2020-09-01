@@ -50,6 +50,7 @@ class New extends Component {
         this.setState({message: response.messages, errors: null});
       },
       successCallBack: () => {
+        window.location.href = Routes.polls_path();
       },
     });
   }
