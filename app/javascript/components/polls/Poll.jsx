@@ -72,6 +72,7 @@ class Poll extends Component {
   }
 
   render() {
+    console.log('poll propz', this.props)
     const currentUser = this.props.current_user
     const {message} = this.state;
     const loggedIn = Boolean(currentUser);
@@ -115,6 +116,7 @@ class Poll extends Component {
               return (
                 <li key={option.id} style={{listStyle: 'none'}}>
                   <div style={optionsButtonStyle}><a>{option.value}</a></div>
+
                 </li>
               )
             }
@@ -129,11 +131,15 @@ class Poll extends Component {
 
         {/*Display each poll*/}
         <div>
-          <h3 className='pb-5'>{poll.question}</h3>
+          <h3 className='pb-5'>Question: {poll.question}</h3>
           {message ? (
             <div className="alert alert-success">{message}</div>
           ) : ("")}
           {renderOptions()}
+          {currentUser && currentUser.my_vote && <div className='text-left'>
+            <h4 className='text-left'>Already voted</h4>
+            <span>My vote: {currentUser.my_vote}</span>
+          </div>}
         </div>
       </div>
     )

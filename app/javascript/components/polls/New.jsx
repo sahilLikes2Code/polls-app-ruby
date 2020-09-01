@@ -41,6 +41,7 @@ class New extends Component {
   }
 
   handleSubmit = (event) => {
+    console.log('clickedd')
     event.preventDefault();
     fetchApi({
       url: Routes.polls_path(),

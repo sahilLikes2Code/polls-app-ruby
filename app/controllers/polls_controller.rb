@@ -1,10 +1,10 @@
 class PollsController < ApplicationController
 
   def index
-    # if logged_in?
-    #   current_user
-    # end
-
+    if logged_in?
+      current_user
+    end
+    
     @polls = Poll.all
     puts @polls.inspect
   end

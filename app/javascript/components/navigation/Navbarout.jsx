@@ -38,13 +38,14 @@ class Navbarout extends React.Component {
           {/*  Create a new poll*/}
           {/*</a>*/}
           <div className="nav justify-content-end">
-            <a className="navbar-brand font-weight-bold">
+            <a style={{pointerEvents: 'none'}} className="navbar-brand font-weight-bold text-light-blue" >
               Current User: {this.props.username}
             </a>
             <a
               type="submit"
               className="navbar-brand font-weight-bold"
               onClick={this.handleLogout}>
+
               Logout
             </a>
           </div>
