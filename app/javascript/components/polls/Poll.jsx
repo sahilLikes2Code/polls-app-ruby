@@ -49,9 +49,10 @@ class Poll extends Component {
       onError: this.handleError,
       onSuccess: (response) => {
         this.setState({message: response.messages});
+      //  fixme implement hot reload
+      window.location.href = Routes.polls_path()
       },
     });
-    window.location.href = Routes.polls_path()
   }
 
   displayErrors() {

@@ -3,7 +3,7 @@ import {fetchApi} from "../../utils/API";
 import * as Routes from "../../utils/Routes";
 import Errors from "../shared/Error";
 import '../../../assets/stylesheets/application.css'
-import axios from 'axios'
+
 
 class New extends Component {
   constructor(props) {
@@ -50,7 +50,6 @@ class New extends Component {
         this.setState({message: response.messages, errors: null});
       },
       successCallBack: () => {
-        window.location.href = Routes.polls_path();
       },
     });
   }
