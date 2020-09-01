@@ -48,14 +48,11 @@ class Poll extends Component {
       },
       onError: this.handleError,
       onSuccess: (response) => {
-        this.setState({message: response.messages });
+        this.setState({message: response.messages});
       },
     });
+    window.location.href = Routes.polls_path()
   }
-  //
-  // fetchListOfUrls = () => {
-  //
-  // }
 
   displayErrors() {
 
@@ -83,9 +80,11 @@ class Poll extends Component {
       border: '2px solid #98C0D9',
       width: "200px",
       marginBottom: '15px',
+      marginRight: '20px',
       background: '#293241',
       color: '#98C0D9',
-      padding: '10px'
+      padding: '10px',
+      textAlign: 'center'
     }
 
     const optionsStyle = {}
@@ -99,8 +98,11 @@ class Poll extends Component {
                 <li key={option.id} style={{listStyle: 'none'}}>
                   <button style={optionsButtonStyle}
                           disabled>{option.value}</button>
-                  <span>{option.vote_count} {option.vote_count == 1 ? 'vote' : 'votes'}</span>
+                  <span
+                    className='font-weight-bolder'>{option.vote_count} {option.vote_count == 1 ? 'vote' : 'votes'}</span>
+
                 </li>
+
               )
             } else if (loggedIn) {
               return (
@@ -121,25 +123,30 @@ class Poll extends Component {
               )
             }
           })}
+          {loggedIn &&
+          <h3 className='pb-3'>Vote status: <span className='text-crimson-red'>
+            {loggedIn && voterIds.includes(currentUser.user_id) ? "Already voted" : loggedIn ? "Yet to vote" : ""}
+          </span>
+          </h3>}
         </ul>
       )
     }
 
     return (
-      <div className='d-flex justify-content-center text-dark-blue'>
+      <div className='text-dark-blue'>
         {this.displayErrors()}
 
         {/*Display each poll*/}
         <div>
-          <h3 className='pb-5'>Question: {poll.question}</h3>
+          <h3 className='pb-2'>Question: {poll.question}</h3>
           {message ? (
             <div className="alert alert-success">{message}</div>
           ) : ("")}
           {renderOptions()}
-          {currentUser && currentUser.my_vote && <div className='text-left'>
-            <h4 className='text-left'>Already voted</h4>
-            <span>My vote: {currentUser.my_vote}</span>
-          </div>}
+          {/*{currentUser && currentUser.my_vote && <div className='text-left'>*/}
+          {/*  <h4 className='text-left'>Already voted</h4>*/}
+          {/*  <span>My vote: {currentUser.my_vote}</span>*/}
+          {/*</div>}*/}
         </div>
       </div>
     )

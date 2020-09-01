@@ -3,6 +3,7 @@ import {fetchApi} from "../../utils/API";
 import * as Routes from "../../utils/Routes";
 import Errors from "../shared/Error";
 import '../../../assets/stylesheets/application.css'
+import axios from 'axios'
 
 class New extends Component {
   constructor(props) {
@@ -54,6 +55,8 @@ class New extends Component {
     });
   }
 
+
+
   displayErrors() {
     const {errors} = this.state;
 
@@ -71,8 +74,8 @@ class New extends Component {
     const {message} = this.state;
 
     return (
-      <div className="container">
-        <h3 className="py-3">Sign Up</h3>
+      <div className="container font-weight-bolder">
+        <h3 className="py-3 text-center">Sign Up</h3>
         {this.displayErrors()}
         {message ? (
           <div className="alert alert-success">{message}</div>
@@ -120,9 +123,11 @@ class New extends Component {
                 />
               </div>
             </div>
-            <button type="submit"  style={{background: "#293241", color: '#98C0D9'}}>
-              Sign Up
-            </button>
+            <div className='text-center'>
+              <button type="submit" className='text-crimson-red bg-darkest-blue' >
+                Sign Up
+              </button>
+            </div>
           </form>
         )}
       </div>

@@ -95,8 +95,8 @@ class New extends Component {
     console.log(this.state)
     const {message} = this.state;
     return (
-      <div className="container">
-        <h3 className="py-3">Create a poll</h3>
+      <div className="container ">
+        <h3 className="py-3 text-center">Create a poll</h3>
         {this.displayErrors()}
         {message ? (
           <div className="alert alert-success">{message}</div>
@@ -154,9 +154,11 @@ class New extends Component {
                 />
               </div>
             </div>
-            <button type="submit"  style={{background: "#293241", color: '#98C0D9'}}>
+            <div className='text-center text-crimson-red'>
+            <button type="submit" className='text-crimson-red bg-darkest-blue'  >
               Create
             </button>
+            </div>
 
           </form>
         )}

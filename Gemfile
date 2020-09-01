@@ -9,7 +9,6 @@ gem 'webpacker'
 gem 'react-rails'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~> 1.4', group: %i[development test]
-
 gem 'pg', :group => [:production]
 
 # Use Puma as the app server

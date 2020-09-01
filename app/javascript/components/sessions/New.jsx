@@ -69,8 +69,8 @@ class New extends React.Component {
     const {message} = this.state;
     return (
 
-      <div>
-        <h2 className="py-3">Sign In</h2>
+      <div className='font-weight-bolder'>
+        <h2 className="py-3 text-center ">Sign In</h2>
         {this.displayErrors()}
         {message ? (
           <div className="alert alert-success">{message}</div>
@@ -100,13 +100,15 @@ class New extends React.Component {
               </div>
             </div>
 
+          <div className='text-center'>
             <div className='mb-3'>Don't have an account? Sign up<button
               style={{background: "none", border: 'none', textDecoration: 'underline'}}
               onClick={() => window.location.href = Routes.signup_path()}>here</button>
             </div>
-            <button type="submit"  style={{background: "#293241", color: '#98C0D9'}}>
+            <button type="submit" className='text-crimson-red  bg-darkest-blue' >
               Sign In
             </button>
+          </div>
           </form>
         )}
       </div>
