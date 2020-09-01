@@ -2,6 +2,7 @@ import React from "react";
 import {fetchApi} from "../../utils/API";
 import * as Routes from "../../utils/Routes";
 import Errors from "../shared/Error";
+import '../../../assets/stylesheets/application.css'
 
 class New extends React.Component {
   constructor(props) {
@@ -33,15 +34,16 @@ class New extends React.Component {
         login: this.state.user,
       },
       onError: () => {
-        this.setState({errors: ['Invalid credentials, Please try again'], type: 'danger',});
-        // window.location.href = Routes.login_path()
-        setTimeout(function (){window.location.href = Routes.login_path();}, 2000)
+        this.setState({
+          errors: ['Invalid credentials, Please try again'],
+          type: 'danger',
+        });
       },
       onSuccess: (response) => {
         this.setState({message: response.messages});
       },
       successCallBack: () => {
-        window.location.href = Routes.polls_path()
+        window.location.href = Routes.root_path()
       },
     });
   };
@@ -52,11 +54,11 @@ class New extends React.Component {
     const {errors} = this.state;
     const {type} = this.state;
     return (
-      <div className="row">
+      <div>
         {errors && (
-          <div className="mt-4">
+          // <div className="mt-4">
             <Errors errors={errors} message={type}/>
-          </div>
+          // </div>
         )}
       </div>
     );
@@ -66,15 +68,17 @@ class New extends React.Component {
   render() {
     const {message} = this.state;
     return (
-      <div className="container">
-        <h3 className="py-3">Sign In</h3>
+
+      <div>
+        <h2 className="py-3">Sign In</h2>
         {this.displayErrors()}
         {message ? (
           <div className="alert alert-success">{message}</div>
         ) : (
           <form onSubmit={this.handleSubmit}>
-            <div className="form-row">
-              <div className="form-group col-md-4">
+
+            <div className='d-flex flex-column align-items-center mb-3'>
+              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
                 <label htmlFor="email">Email address</label>
                 <input
                   type="email"
@@ -84,9 +88,7 @@ class New extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-4">
+              <div className="w-50 mb-3" style={{margin: '0 auto'}}>
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
@@ -96,9 +98,13 @@ class New extends React.Component {
                   onChange={this.handleChange}
                 />
               </div>
-              {/*<div>Don't have an account? Sign up <button style={{background:"none"}} onClick={()=> window.location.href = Routes.signup_path()}>here</button></div>*/}
             </div>
-            <button type="submit" className="btn btn-info">
+
+            <div className='mb-3'>Don't have an account? Sign up<button
+              style={{background: "none", border: 'none', textDecoration: 'underline'}}
+              onClick={() => window.location.href = Routes.signup_path()}>here</button>
+            </div>
+            <button type="submit"  style={{background: "#293241", color: '#98C0D9'}}>
               Sign In
             </button>
           </form>
@@ -110,3 +116,31 @@ class New extends React.Component {
 
 
 export default New;
+
+
+//
+// <div className="form-row">
+//   <div className="form-group col-md-4">
+//     <label htmlFor="email">Email address</label>
+//     <input
+//       type="email"
+//       className="form-control"
+//       id="email"
+//       name="email"
+//       onChange={this.handleChange}
+//     />
+//   </div>
+// </div>
+// <div className="form-row">
+//   <div className="form-group col-md-4">
+//     <label htmlFor="password">Password</label>
+//     <input
+//       type="password"
+//       className="form-control"
+//       id="password"
+//       name="password"
+//       onChange={this.handleChange}
+//     />
+//   </div>
+//
+// </div>

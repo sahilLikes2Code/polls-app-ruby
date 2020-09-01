@@ -24,6 +24,8 @@ class UsersController < ApplicationController
   end
 
   def create
+    puts 'paramzz'
+    puts user_params
     @user = User.new(user_params)
     if @user.save
       login!

@@ -6,6 +6,7 @@ export function home_path() {
 export function polls_path() {
   return "/polls";
 }
+
 export function create_polls_path() {
   return "/polls/new";
 }
@@ -14,6 +15,9 @@ export function votes_path() {
   return "/vote";
 }
 
+export function root_path() {
+  return "/";
+}
 
 //
 export function tasks_path() {

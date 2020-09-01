@@ -13,3 +13,77 @@
  *= require_tree .
  *= require_self
  */
+
+:root {
+    --darkest-blue: #293241;
+    --dark-blue: #3D5B81;
+    --light-blue: #98C0D9;
+    --lightest-blue: #DFFBFC;
+    --crimson-red: #EE6B4D;
+}
+
+body {
+    background-color: var(--light-blue);
+}
+
+.bg-darkest-blue {
+    background-color: var(--darkest-blue);
+}
+
+.bg-light-blue {
+    background-color: var(--light-blue);
+}
+
+.bg-lightest-blue {
+    background-color: var(--lightest-blue);
+}
+
+.bg-crimson-red {
+    background-color: var(--crimson-red);
+}
+
+.text-darkest-blue {
+    color: var(--darkest-blue);
+}
+
+.text-light-blue {
+    color: var(--light-blue);
+}
+
+.text-lightest-blue {
+    color: var(--lightest-blue);
+}
+
+.text-darkest-blue {
+    color: var(--darkest-blue);
+}
+
+.text-crimson-red {
+    color: var(--crimson-red);
+}
+
+nav a {
+    color: var(--light-blue)
+}
+
+/*button:hover, a:hover {*/
+/*    -webkit-box-shadow: 0px 0px 5px 5px rgba(61, 91, 129, 1);*/
+/*    -moz-box-shadow: 0px 0px 5px 5px rgba(61, 91, 129, 1);*/
+/*    box-shadow: 0px 0px 5px 5px rgba(61, 91, 129, 1);*/
+/*}*/
+
+button:hover, a:hover {
+    color: white;
+    /*text-shadow: 1px 1px 9px rgba(41, 50, 65, 1);*/
+    /*!*-webkit-box-shadow: 0px 0px 5px 5px rgba(61, 91, 129, 1);*!*/
+    /*!*-moz-box-shadow: 0px 0px 5px 5px rgba(61, 91, 129, 1);*!*/
+    /*!*box-shadow: 0px 0px 5px 5px rgba(61, 91, 129, 1);*!*/
+}
+
+
+* {
+    text-align: center;
+}
+
+
+

@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {fetchApi} from "../../utils/API";
 import * as Routes from "../../utils/Routes";
 import Errors from "../shared/Error";
+import '../../../assets/stylesheets/application.css'
 
 class New extends Component {
   constructor(props) {
@@ -45,7 +46,7 @@ class New extends Component {
       },
       onError: this.handleError,
       onSuccess: (response) => {
-        this.setState({message: response.messages});
+        this.setState({message: response.messages, errors: null});
       },
       successCallBack: () => {
         window.location.href = Routes.polls_path();
@@ -57,11 +58,9 @@ class New extends Component {
     const {errors} = this.state;
 
     return (
-      <div className="row">
+      <div>
         {errors && (
-          <div className="mt-4">
             <Errors errors={errors.errors} message={errors.type}/>
-          </div>
         )}
       </div>
     );
@@ -79,9 +78,9 @@ class New extends Component {
           <div className="alert alert-success">{message}</div>
         ) : (
           <form onSubmit={this.handleSubmit}>
-            <div className="form-row">
-              <div className="form-group col-md-4">
-                <label htmlFor="name">Name</label>
+            <div className='d-flex flex-column align-items-center mb-3'>
+              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
+                <label htmlFor="name">Userame</label>
                 <input
                   type="text"
                   className="form-control"
@@ -90,21 +89,17 @@ class New extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-4">
-                <label htmlFor="email">Email address</label>
+              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
+                <label htmlFor="email">Email</label>
                 <input
-                  type="email"
+                  type="text"
                   className="form-control"
                   id="email"
                   name="email"
                   onChange={this.handleChange}
                 />
               </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-4">
+              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
                 <label htmlFor="password">Password</label>
                 <input
                   type="password"
@@ -114,12 +109,8 @@ class New extends Component {
                   onChange={this.handleChange}
                 />
               </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-4">
-                <label htmlFor="password_confirmation">
-                  Password Confirmation
-                </label>
+              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
+                <label htmlFor="password_confirmation"> Password Confirmation</label>
                 <input
                   type="password"
                   className="form-control"
@@ -129,7 +120,7 @@ class New extends Component {
                 />
               </div>
             </div>
-            <button type="submit" className="btn btn-info">
+            <button type="submit"  style={{background: "#293241", color: '#98C0D9'}}>
               Sign Up
             </button>
           </form>

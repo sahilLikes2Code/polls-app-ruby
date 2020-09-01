@@ -3,6 +3,7 @@ import {fetchApi} from "../../utils/API";
 import * as Routes from "../../utils/Routes";
 import Errors from "../shared/Error";
 
+
 class Poll extends Component {
   constructor(props) {
     super(props);
@@ -12,9 +13,10 @@ class Poll extends Component {
         poll_id: 0,
         option_id: 0,
       },
-      options: this.props.props.options,
+      options: this.props.poll.options,
       errors: null,
-      message: null
+      message: null,
+      myVotedOption: null
     };
     this.handleError = this.handleError.bind(this);
   }
@@ -27,15 +29,13 @@ class Poll extends Component {
         type: response.type,
       },
     });
-    // window.location.href = Routes.polls_path();
   }
 
 
   handleClick = async (e) => {
-
     await this.setState({
       vote: {
-        poll_id: Number(this.props.props.poll_id),
+        poll_id: Number(this.props.poll.poll_id),
         option_id: Number(e.target.value),
       }
     })
@@ -48,14 +48,14 @@ class Poll extends Component {
       },
       onError: this.handleError,
       onSuccess: (response) => {
-        this.setState({message: response.messages});
-        setTimeout(function (){window.location.href = Routes.polls_path(); 1500})
+        this.setState({message: response.messages });
       },
-      // successCallBack: () => {
-      //
-      // },
     });
   }
+  //
+  // fetchListOfUrls = () => {
+  //
+  // }
 
   displayErrors() {
 
@@ -72,20 +72,32 @@ class Poll extends Component {
   }
 
   render() {
+    const currentUser = this.props.current_user
     const {message} = this.state;
-    const {options} = this.state;
-    const loggedIn = this.props.props.logged_in;
-    const totalVotes = this.props.props.total_votes;
-    const voterIds = this.props.props.voter_ids;
-    const userId = this.props.props.user_id;
+    const loggedIn = Boolean(currentUser);
+    const {poll} = this.props
+    const voterIds = poll.voter_ids
+
+    const optionsButtonStyle = {
+      border: '2px solid #98C0D9',
+      width: "200px",
+      marginBottom: '15px',
+      background: '#293241',
+      color: '#98C0D9',
+      padding: '10px'
+    }
+
+    const optionsStyle = {}
     const renderOptions = () => {
       return (
-        <ul>
-          {options.map(option => {
-            if (loggedIn && voterIds.includes(userId) ) {
+        <ul style={{paddingInlineStart: 0}}>
+          {poll.options.map(option => {
+            if (loggedIn && voterIds.includes(currentUser.user_id)) {
+              console.log('voted')
               return (
                 <li key={option.id} style={{listStyle: 'none'}}>
-                  <a style={{marginRight: '20px'}}>{option.value}</a>
+                  <button style={optionsButtonStyle}
+                          disabled>{option.value}</button>
                   <span>{option.vote_count} {option.vote_count == 1 ? 'vote' : 'votes'}</span>
                 </li>
               )
@@ -94,13 +106,15 @@ class Poll extends Component {
                 <li key={option.id} style={{listStyle: 'none'}}>
                   <button value={option.id}
                           onClick={this.handleClick}
-                          style={{marginRight: '20px'}}>{option.value}</button>
+                          style={optionsButtonStyle}>{option.value}</button>
+                  <span style={{display: 'none'}}>{option.vote_count}</span>
+                  {/*{option.vote_count && <span>{option.vote_count}<span>}*/}
                 </li>
               )
             } else {
               return (
                 <li key={option.id} style={{listStyle: 'none'}}>
-                  <a>{option.value}</a>
+                  <div style={optionsButtonStyle}><a>{option.value}</a></div>
                 </li>
               )
             }
@@ -110,10 +124,12 @@ class Poll extends Component {
     }
 
     return (
-      <div className="container">
+      <div className='d-flex justify-content-center text-dark-blue'>
         {this.displayErrors()}
+
+        {/*Display each poll*/}
         <div>
-          <h1>{this.props.props.question}</h1>
+          <h3 className='pb-5'>{poll.question}</h3>
           {message ? (
             <div className="alert alert-success">{message}</div>
           ) : ("")}

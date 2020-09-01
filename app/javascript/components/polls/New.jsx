@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {fetchApi} from "../../utils/API";
 import * as Routes from "../../utils/Routes";
 import Errors from "../shared/Error";
+import '../../../assets/stylesheets/application.css'
 
 class New extends Component {
   constructor(props) {
@@ -62,16 +63,28 @@ class New extends Component {
     });
   };
 
-  displayErrors() {
+  // displayErrors() {
+  //
+  //   const {errors} = this.state;
+  //   const {type} = this.state;
+  //   return (
+  //     <div className="row">
+  //       {errors && (
+  //         // <div className="mt-4">
+  //           <Errors errors={errors} message={type}/>
+  //         // </div>
+  //       )}
+  //     </div>
+  //   );
+  // }
 
+  displayErrors() {
     const {errors} = this.state;
     const {type} = this.state;
     return (
-      <div className="row">
+      <div>
         {errors && (
-          <div className="mt-4">
-            <Errors errors={errors} message={type}/>
-          </div>
+          <Errors errors={errors.errors} message={errors.type}/>
         )}
       </div>
     );
@@ -88,8 +101,8 @@ class New extends Component {
           <div className="alert alert-success">{message}</div>
         ) : (
           <form onSubmit={this.handleSubmit}>
-            <div className="form-row">
-              <div className="form-group col-md-4">
+            <div className='d-flex flex-column align-items-center mb-3'>
+              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
                 <label htmlFor="question">Question</label>
                 <input
                   type="text"
@@ -99,9 +112,7 @@ class New extends Component {
                   onChange={this.setQuestion}
                 />
               </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-4">
+              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
                 <label htmlFor="option1">Option 1</label>
                 <input
                   type="text"
@@ -111,9 +122,7 @@ class New extends Component {
                   onChange={this.setOption}
                 />
               </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-4">
+              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
                 <label htmlFor="option2">Option 2</label>
                 <input
                   type="text"
@@ -123,9 +132,7 @@ class New extends Component {
                   onChange={this.setOption}
                 />
               </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-4">
+              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
                 <label htmlFor="option3">Option 3</label>
                 <input
                   type="text"
@@ -135,9 +142,7 @@ class New extends Component {
                   onChange={this.setOption}
                 />
               </div>
-            </div>
-            <div className="form-row">
-              <div className="form-group col-md-4">
+              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
                 <label htmlFor="option4">Option 4</label>
                 <input
                   type="text"
@@ -148,9 +153,10 @@ class New extends Component {
                 />
               </div>
             </div>
-            <button type="submit" className="btn btn-info">
+            <button type="submit"  style={{background: "#293241", color: '#98C0D9'}}>
               Create
             </button>
+
           </form>
         )}
       </div>

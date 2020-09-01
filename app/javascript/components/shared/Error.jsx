@@ -4,10 +4,12 @@ function Errors({errors, message}) {
 
   return (
     <React.Fragment>
-      <div className={`alert alert-${message}`}>
-        {errors.map((error) => (
-          <li key={errors.indexOf(error)}>{error}</li>
-        ))}
+      <div className='d-flex justify-content-center '>
+        <div className={`alert alert-${message}`}>
+          {errors.map((error) => (
+            <li key={errors.indexOf(error)} className='text-left'>{error}</li>
+          ))}
+        </div>
       </div>
     </React.Fragment>
   );
