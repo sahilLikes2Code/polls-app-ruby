@@ -8,6 +8,10 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'webpacker'
 gem 'react-rails'
 # Use sqlite3 as the database for Active Record
+group :production, :staging do
+  gem 'rails_12factor'
+end
+
 gem 'sqlite3', '~> 1.4', group: %i[development test]
 gem 'pg', :group => [:production]
 
