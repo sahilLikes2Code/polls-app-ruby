@@ -47,7 +47,7 @@ class Index extends Component {
     const imageStyle = {width: '55%', marginTop: '20px'}
 
     return (
-      <div className='bg-light-blue custom-height'>
+      <div className='bg-light-blue  height-inherit custom-mb'>
         <div className='text-center wrapper font-weight-bold text-crimson-red'>
           <div className='pt-5'>
             {/*display this if no polls exist*/}
@@ -66,9 +66,9 @@ class Index extends Component {
             {/*display prompt to create poll if user logged in*/}
             {(currentUser) &&
             <div>
-              <a className="navbar-brand text-crimson-red "
+              <a className="navbar-brand text-crimson-red hover-color-white"
                  href={Routes.create_polls_path()}>
-                <h2 className='hover-color-white'> Create a new poll</h2>
+                <h2> Create a new poll</h2>
               </a>
             </div>
             }

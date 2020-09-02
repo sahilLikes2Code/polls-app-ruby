@@ -63,17 +63,11 @@
 
 /* general */
 
-/*body {*/
-/*    background-color: var(--light-blue);*/
-/*}*/
 
 nav a {
     color: var(--light-blue)
 }
 
-/*button:hover, a:hover {*/
-/*    color: white*/
-/*}*/
 
 .hover-color-white:hover {
     color: white;
@@ -83,8 +77,29 @@ nav a {
     height: calc(100vh - 56px);
 }
 
+.height-inherit {
+    height: inherit;
+}
+
 .wrapper {
     width: 80%;
     margin: 0 auto;
 }
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.custom-mb {
+    margin-bottom: -20px;
+}
+
+/*body {*/
+/*    background-color: var(--light-blue);*/
+/*}*/
+
+/*button:hover, a:hover {*/
+/*    color: white*/
+/*}*/
 
