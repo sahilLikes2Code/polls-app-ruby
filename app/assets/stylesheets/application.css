@@ -10,10 +10,9 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
- *= require_directory
- */
+ /**= require_tree .*/
+/**= require_self*/
+/**!*/
 
 :root {
     --darkest-blue: #293241;
@@ -24,7 +23,7 @@
 }
 
 body {
-    /*background-color: var(--light-blue);*/
+    background-color: var(--crimson-red) !important;
 }
 
 .bg-darkest-blue {
@@ -90,7 +89,7 @@ nav a {
 }
 
 
-.custom-height {
-    height: calc(100vh - 56px);
-}
+/*.custom-height {*/
+/*    height: calc(100vh - 56px);*/
+/*}*/
 
