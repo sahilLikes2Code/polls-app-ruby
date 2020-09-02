@@ -28,29 +28,27 @@ class Navbarout extends React.Component {
   render() {
 
     return (
-      <div>
-        <nav className="navbar bg-darkest-blue">
-          <a className="navbar-brand font-weight-bold hvr-itm-col-white"
-             href={Routes.root_path()}>
-            Pollz
-          </a>
-          {/*<a className="navbar-brand font-weight-bold" href={Routes.create_polls_path()}>*/}
-          {/*  Create a new poll*/}
-          {/*</a>*/}
-          <div className="nav justify-content-end">
-            <a style={{pointerEvents: 'none'}}
-               className="navbar-brand font-weight-bold text-light-blue">{this.props.username}
-            </a>
-            <a
-              type="submit"
-              className="navbar-brand font-weight-bold hvr-itm-col-white"
-              onClick={this.handleLogout}>
 
-              Logout
-            </a>
-          </div>
-        </nav>
-      </div>
+      <nav
+        className="navbar bg-darkest-blue font-weight-bold hvr-itm-col-white text-light-blue">
+        <a className="navbar-brand "
+           href={Routes.root_path()}>
+          Pollz
+        </a>
+
+        <div className="nav justify-content-end">
+          <a style={{pointerEvents: 'none'}}
+             className="navbar-brand">{this.props.username}
+          </a>
+          <a
+            type="submit"
+            className="navbar-brand"
+            onClick={this.handleLogout}>
+
+            Logout
+          </a>
+        </div>
+      </nav>
     );
   }
 }

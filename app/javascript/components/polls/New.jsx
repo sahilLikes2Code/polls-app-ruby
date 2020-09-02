@@ -17,7 +17,7 @@ class New extends Component {
           {value: ''},
         ],
       },
-      errors: null,
+      errors: [],
       message: null
     };
   }
@@ -40,19 +40,23 @@ class New extends Component {
     })
   }
 
-  handleSubmit = (event) => {
+  handleSubmit = async (event) => {
 
     event.preventDefault();
-    fetchApi({
+
+    await fetchApi({
       url: Routes.polls_path(),
       method: "POST",
       body: {
         poll: this.state.poll,
       },
       onError: () => {
+
         this.setState({
-          errors: ['Please enter a question with four options'],
-          type: 'danger',
+          errors: {
+            errors: ['Please enter a question with four options'],
+            type: 'danger',
+          }
         });
       },
       onSuccess: (response) => {
@@ -64,13 +68,12 @@ class New extends Component {
     });
   };
 
-
   displayErrors() {
     const {errors} = this.state;
     const {type} = this.state;
     return (
       <div>
-        {errors && (
+        {errors.errors && (
           <Errors errors={errors.errors} message={errors.type}/>
         )}
       </div>
@@ -78,19 +81,20 @@ class New extends Component {
   }
 
   render() {
-    console.log(this.state)
     const {message} = this.state;
     return (
-      <div className='bg-light-blue custom-height' >
-      <div className="container ">
-        <h3 className="py-3 text-center">Create a poll</h3>
+      <div className="container text-center font-weight-bold">
+        <h3 className="py-3">Create a poll</h3>
+        {/*display errors if any*/}
         {this.displayErrors()}
+
+        {/*display success message and user input form */}
         {message ? (
           <div className="alert alert-success">{message}</div>
         ) : (
           <form onSubmit={this.handleSubmit}>
             <div className='d-flex flex-column align-items-center mb-3'>
-              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
+              <div className='w-50 mb-3'>
                 <label htmlFor="question">Question</label>
                 <input
                   type="text"
@@ -100,7 +104,7 @@ class New extends Component {
                   onChange={this.setQuestion}
                 />
               </div>
-              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
+              <div className='w-50 mb-3'>
                 <label htmlFor="option1">Option 1</label>
                 <input
                   type="text"
@@ -110,7 +114,7 @@ class New extends Component {
                   onChange={this.setOption}
                 />
               </div>
-              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
+              <div className='w-50 mb-3'>
                 <label htmlFor="option2">Option 2</label>
                 <input
                   type="text"
@@ -120,7 +124,7 @@ class New extends Component {
                   onChange={this.setOption}
                 />
               </div>
-              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
+              <div className='w-50 mb-3'>
                 <label htmlFor="option3">Option 3</label>
                 <input
                   type="text"
@@ -130,7 +134,7 @@ class New extends Component {
                   onChange={this.setOption}
                 />
               </div>
-              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
+              <div className='w-50 mb-3'>
                 <label htmlFor="option4">Option 4</label>
                 <input
                   type="text"
@@ -141,15 +145,12 @@ class New extends Component {
                 />
               </div>
             </div>
-            <div className='text-center text-crimson-red'>
-            <button type="submit" className='text-crimson-red bg-darkest-blue'  >
+            <button type="submit"
+                    className='text-crimson-red bg-darkest-blue'>
               Create
             </button>
-            </div>
-
           </form>
         )}
-      </div>
       </div>
     );
   }

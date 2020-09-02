@@ -4,7 +4,6 @@ import '../../../assets/stylesheets/application.css'
 import * as Routes from "../../utils/Routes"
 import ballotBoxImage
   from '../../../assets/images/pexels-element-digital-1550337.jpg'
-
 import axios from 'axios'
 
 class Index extends Component {
@@ -21,18 +20,14 @@ class Index extends Component {
   }
 
   fetchList = async () => {
-    // console.log('in fetch list function')
     try {
-      var response = await axios.get('/polls.json')
-      console.log('response', response)
+      const response = await axios.get(Routes.polls_path_json());
       await this.setState({
-        // props: 1
         props: response.data
       })
     } catch {
       console.error('error');
     }
-    console.log('state in fetch list', this.state)
   }
 
 
@@ -47,41 +42,37 @@ class Index extends Component {
 
 
   render() {
-    // console.log('propzz', this.props)
-    // console.log('state', this.state)
-
     const listOfPolls = this.props.polls
     const currentUser = this.props.current_user
+    const imageStyle = {width: '55%', marginTop: '20px'}
 
-    return <div className='bg-light-blue custom-height' >
-      <div className='wrapper pt-5'>
-
-        {/*when no polls exist*/}
-        {(listOfPolls.length == 0) &&
-        <div className='text-center'>
-          <img style={{width: '55%', marginTop: '20px'}} src={ballotBoxImage}/>
-          <h3 className="py-3 text-crimson-red
-olor: var(--crimson-red text-center">No polls published yet</h3>
+    return <div className='text-center wrapper font-weight-bold text-crimson-red'>
+      <div className='pt-5'>
+        {/*display this if no polls exist*/}
+        {(listOfPolls.length === 0) &&
+        <div>
+          <img style={imageStyle} src={ballotBoxImage}
+               alt='ballot-box'/>
+          <h3 className="py-3 ">No polls published yet</h3>
         </div>}
-        {/**/}
-        {(currentUser == undefined) &&
-        <h4 className='text-center text-crimson-red'>Login or signup to
-          create/vote in a poll</h4>}
-        {/*Display polls*/}
 
+        {/*display this if user not logged in*/}
+        {(currentUser === undefined) &&
+        <h4 className=''>Login or signup to
+          create/vote in a poll</h4>}
+
+        {/*display prompt to create poll if user logged in*/}
         {(currentUser) &&
-        <div className='text-center'>
-          <a className="navbar-brand font-weight-bold text-crimson-red "
+        <div>
+          <a className="navbar-brand text-crimson-red"
              href={Routes.create_polls_path()}>
             <h2> Create a new poll</h2>
           </a>
         </div>
         }
-        {/*Display polls*/}
-        <div className='pt-3'>{this.polls()}</div>
 
-        {/*  test button */}
-        {/*<button onClick={this.fetchList}>fetch state filling props</button>*/}
+        {/*display polls*/}
+        <div className='pt-3 text-left font-weight-bolder text-darkest-blue'>{this.polls()}</div>
       </div>
     </div>
   }

@@ -1,10 +1,9 @@
-// experiment routes
-export function home_path() {
-  return "/home";
-}
-
 export function polls_path() {
   return "/polls";
+}
+
+export function polls_path_json() {
+  return "/polls.json";
 }
 
 export function create_polls_path() {
@@ -17,23 +16,6 @@ export function votes_path() {
 
 export function root_path() {
   return "/";
-}
-
-//
-export function tasks_path() {
-  return "/tasks";
-}
-
-export function new_task_path() {
-  return "/tasks/new";
-}
-
-export function task_path(id) {
-  return `/tasks/${id}`;
-}
-
-export function edit_task_path(id) {
-  return `/tasks/${id}/edit`;
 }
 
 export function users_path() {
@@ -54,9 +36,5 @@ export function logout_path() {
 
 export function signup_path() {
   return "/users/new";
-}
-
-export function task_comments_path(task_id) {
-  return `/tasks/${task_id}/comments`;
 }
 

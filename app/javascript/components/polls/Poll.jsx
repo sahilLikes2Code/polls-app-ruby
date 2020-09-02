@@ -9,7 +9,6 @@ class Poll extends Component {
     super(props);
     this.state = {
       vote: {
-        //need to get both poll id and option id from front end
         poll_id: 0,
         option_id: 0,
       },
@@ -42,10 +41,6 @@ class Poll extends Component {
         }
       })
 
-
-      // var response = await axios.post( Routes.votes_path(), {vote: this.state.vote})
-      // console.log('increase counter response in axios ', response)
-
       await fetchApi({
         url: Routes.votes_path(),
         method: "POST",
@@ -61,16 +56,16 @@ class Poll extends Component {
         },
       });
     }
-    catch {
-      console.log("in catch block")
+    catch(error) {
+      console.log(error)
     }
 
     this.props.fetchList()
   }
 
   displayErrors() {
-
     const {errors} = this.state;
+
     return (
       <div className="row">
         {errors && (
@@ -83,13 +78,11 @@ class Poll extends Component {
   }
 
   render() {
-    // console.log('poll propz', this.props)
-    const currentUser = this.props.current_user
-    const {message} = this.state;
-    const loggedIn = Boolean(currentUser);
     const {poll} = this.props
+    const {message} = this.state;
+    const currentUser = this.props.current_user
+    const loggedIn = Boolean(currentUser)
     const voterIds = poll.voter_ids
-
     const optionsButtonStyle = {
       border: '2px solid #98C0D9',
       width: "200px",
@@ -100,27 +93,28 @@ class Poll extends Component {
       padding: '10px',
       textAlign: 'center'
     }
+    const ulStyle = {paddingInlineStart: 0}
+    const liStyle = {listStyle: 'none'}
+    const anchorStyle = {pointerEvents: 'none'}
 
-    const optionsStyle = {}
+
     const renderOptions = () => {
       return (
-        <ul style={{paddingInlineStart: 0}}>
+        <ul style={ulStyle}>
           {poll.options.map(option => {
             if (loggedIn && voterIds.includes(currentUser.user_id)) {
-              // console.log('voted')
               return (
-                <li key={option.id} style={{listStyle: 'none'}}>
+                <li key={option.id} style={liStyle}>
                   <button style={optionsButtonStyle}
                           disabled>{option.value}</button>
-                  <span
-                    className='font-weight-bolder'>{option.vote_count} {option.vote_count == 1 ? 'vote' : 'votes'}</span>
+                  <span>{option.vote_count} {option.vote_count === 1 ? 'vote' : 'votes'}</span>
 
                 </li>
 
               )
             } else if (loggedIn) {
               return (
-                <li key={option.id} style={{listStyle: 'none'}}>
+                <li key={option.id} style={liStyle}>
                   <button value={option.id}
                           onClick={this.handleClick}
                           style={optionsButtonStyle}>{option.value}</button>
@@ -130,9 +124,8 @@ class Poll extends Component {
               )
             } else {
               return (
-                <li key={option.id} style={{listStyle: 'none'}}>
-                  <div style={optionsButtonStyle}><a>{option.value}</a></div>
-
+                <li key={option.id} style={liStyle}>
+                  <div style={optionsButtonStyle}><a className='font-weight-light text-light-blue' style={anchorStyle}>{option.value}</a></div>
                 </li>
               )
             }
@@ -148,21 +141,17 @@ class Poll extends Component {
 
     return (
       <div className='text-dark-blue'>
+        {/*display errors if any*/}
         {this.displayErrors()}
 
-        {/*Display each poll*/}
+        {/*display each poll*/}
         <div>
           <h3 className='pb-2'>Question: {poll.question}</h3>
           {message ? (
-            <div className="alert alert-success">{message}</div>
+            <div className="alert alert-success font-weight-light">{message}</div>
           ) : ("")}
           {renderOptions()}
-          {/*{currentUser && currentUser.my_vote && <div className='text-left'>*/}
-          {/*  <h4 className='text-left'>Already voted</h4>*/}
-          {/*  <span>My vote: {currentUser.my_vote}</span>*/}
-          {/*</div>}*/}
         </div>
-        {/*<button onClick={this.props.fetchList}>fetch state filling props</button>*/}
       </div>
     )
   }

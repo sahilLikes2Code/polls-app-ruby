@@ -39,6 +39,7 @@ class New extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+
     fetchApi({
       url: Routes.users_path(),
       method: "POST",
@@ -76,7 +77,9 @@ class New extends Component {
       <div className='bg-light-blue custom-height'>
         <div className="container font-weight-bolder">
           <h3 className="py-3 text-center">Sign Up</h3>
+          {/*display errors if any*/}
           {this.displayErrors()}
+          {/*display success message and user input form*/}
           {message ? (
             <div className="alert alert-success">{message}</div>
           ) : (

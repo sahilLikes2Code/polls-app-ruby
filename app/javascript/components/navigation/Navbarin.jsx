@@ -10,24 +10,23 @@ class Navbarin extends React.Component {
 
 
     return (
-      <div>
-        <nav className="navbar  bg-darkest-blue">
-          <a className="navbar-brand font-weight-bold hvr-itm-col-white"
-             href={Routes.root_path()}>
-            Pollz
+      <nav
+        className="navbar  bg-darkest-blue hvr-itm-col-white font-weight-bold">
+        <a className="navbar-brand  "
+           href={Routes.root_path()}>
+          Pollz
+        </a>
+        <div>
+          <a className="navbar-brand  "
+             href={Routes.login_path()}>
+            Login
           </a>
-          <div>
-            <a className="navbar-brand font-weight-bold hvr-itm-col-white"
-               href={Routes.login_path()}>
-              Login
-            </a>
-            <a className="navbar-brand font-weight-bold hvr-itm-col-white"
-               href={Routes.signup_path()}>
-              Signup
-            </a>
-          </div>
-        </nav>
-      </div>
+          <a className="navbar-brand  "
+             href={Routes.signup_path()}>
+            Signup
+          </a>
+        </div>
+      </nav>
     );
   }
 }

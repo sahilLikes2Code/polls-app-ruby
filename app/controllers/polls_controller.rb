@@ -5,7 +5,6 @@ class PollsController < ApplicationController
       current_user
     end
     @polls = Poll.all
-    # render status: :ok, json: {notice: 'Polls list', polls: @polls}
   end
 
 
@@ -52,10 +51,6 @@ class PollsController < ApplicationController
     else
       render status: :not_found, json: {errors: ["Poll not found or unauthorized access"]}
     end
-    # Fixme, try to refactor in a better manner
-    # else
-    #   render status: :bad_request, json: {errors: ["Unauthorized access"]}
-    # end
   end
 
   private

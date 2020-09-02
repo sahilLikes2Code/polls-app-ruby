@@ -15,18 +15,15 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  # fixme, currently not in use
-  def authorized_user?
-    @user == current_user
-  end
+  # unused
+  # def authorized_user?
+  #   @user == current_user
+  # end
 
   def logout!
     session.clear
   end
-
-  # def already_voted?(poll)
-  #   poll.voter_ids.include?(current_user.id)
-  # end
+  
 
 end
 

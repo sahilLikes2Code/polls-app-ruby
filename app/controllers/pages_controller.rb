@@ -3,7 +3,7 @@ class PagesController < ApplicationController
     if logged_in?
       current_user
     end
+
     @polls = Poll.all
-    
   end
 end
