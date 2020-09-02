@@ -56,14 +56,13 @@ class New extends Component {
   }
 
 
-
   displayErrors() {
     const {errors} = this.state;
 
     return (
       <div>
         {errors && (
-            <Errors errors={errors.errors} message={errors.type}/>
+          <Errors errors={errors.errors} message={errors.type}/>
         )}
       </div>
     );
@@ -74,62 +73,66 @@ class New extends Component {
     const {message} = this.state;
 
     return (
-      <div className="container font-weight-bolder">
-        <h3 className="py-3 text-center">Sign Up</h3>
-        {this.displayErrors()}
-        {message ? (
-          <div className="alert alert-success">{message}</div>
-        ) : (
-          <form onSubmit={this.handleSubmit}>
-            <div className='d-flex flex-column align-items-center mb-3'>
-              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
-                <label htmlFor="name">Userame</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="username"
-                  name="username"
-                  onChange={this.handleChange}
-                />
+      <div className='bg-light-blue custom-height'>
+        <div className="container font-weight-bolder">
+          <h3 className="py-3 text-center">Sign Up</h3>
+          {this.displayErrors()}
+          {message ? (
+            <div className="alert alert-success">{message}</div>
+          ) : (
+            <form onSubmit={this.handleSubmit}>
+              <div className='d-flex flex-column align-items-center mb-3'>
+                <div className='w-50 mb-3' style={{margin: '0 auto'}}>
+                  <label htmlFor="name">Userame</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="username"
+                    name="username"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className='w-50 mb-3' style={{margin: '0 auto'}}>
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="email"
+                    name="email"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className='w-50 mb-3' style={{margin: '0 auto'}}>
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="password"
+                    name="password"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className='w-50 mb-3' style={{margin: '0 auto'}}>
+                  <label htmlFor="password_confirmation"> Password
+                    Confirmation</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="password_confirmation"
+                    name="password_confirmation"
+                    onChange={this.handleChange}
+                  />
+                </div>
               </div>
-              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
-                <label htmlFor="email">Email</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="email"
-                  name="email"
-                  onChange={this.handleChange}
-                />
+              <div className='text-center'>
+                <button type="submit"
+                        className='text-crimson-red bg-darkest-blue'>
+                  Sign Up
+                </button>
               </div>
-              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password"
-                  name="password"
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
-                <label htmlFor="password_confirmation"> Password Confirmation</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password_confirmation"
-                  name="password_confirmation"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className='text-center'>
-              <button type="submit" className='text-crimson-red bg-darkest-blue' >
-                Sign Up
-              </button>
-            </div>
-          </form>
-        )}
+            </form>
+          )}
+        </div>
       </div>
     );
   }

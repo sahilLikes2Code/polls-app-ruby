@@ -53,35 +53,37 @@ class Index extends Component {
     const listOfPolls = this.props.polls
     const currentUser = this.props.current_user
 
-    return <div className='wrapper pt-5'>
+    return <div className='bg-light-blue custom-height' >
+      <div className='wrapper pt-5'>
 
-      {/*when no polls exist*/}
-      {(listOfPolls.length == 0) &&
-      <div className='text-center'>
-        <img style={{width: '55%', marginTop: '20px'}} src={ballotBoxImage}/>
-        <h3 className="py-3 text-crimson-red
+        {/*when no polls exist*/}
+        {(listOfPolls.length == 0) &&
+        <div className='text-center'>
+          <img style={{width: '55%', marginTop: '20px'}} src={ballotBoxImage}/>
+          <h3 className="py-3 text-crimson-red
 olor: var(--crimson-red text-center">No polls published yet</h3>
-      </div>}
-      {/**/}
-      {(currentUser == undefined) &&
-      <h4 className='text-center text-crimson-red'>Login or signup to
-        create/vote in a poll</h4>}
-      {/*Display polls*/}
+        </div>}
+        {/**/}
+        {(currentUser == undefined) &&
+        <h4 className='text-center text-crimson-red'>Login or signup to
+          create/vote in a poll</h4>}
+        {/*Display polls*/}
 
-      {(currentUser) &&
-      <div className='text-center'>
-        <a className="navbar-brand font-weight-bold text-crimson-red "
-           href={Routes.create_polls_path()}>
-          <h2> Create a new poll</h2>
-        </a>
+        {(currentUser) &&
+        <div className='text-center'>
+          <a className="navbar-brand font-weight-bold text-crimson-red "
+             href={Routes.create_polls_path()}>
+            <h2> Create a new poll</h2>
+          </a>
+        </div>
+        }
+        {/*Display polls*/}
+        <div className='pt-3'>{this.polls()}</div>
+
+        {/*  test button */}
+        {/*<button onClick={this.fetchList}>fetch state filling props</button>*/}
       </div>
-      }
-      {/*Display polls*/}
-      <div className='pt-3'>{this.polls()}</div>
-
-      {/*  test button */}
-      {/*<button onClick={this.fetchList}>fetch state filling props</button>*/}
-    </div>;
+    </div>
   }
 }
 

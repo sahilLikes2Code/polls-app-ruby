@@ -64,20 +64,6 @@ class New extends Component {
     });
   };
 
-  // displayErrors() {
-  //
-  //   const {errors} = this.state;
-  //   const {type} = this.state;
-  //   return (
-  //     <div className="row">
-  //       {errors && (
-  //         // <div className="mt-4">
-  //           <Errors errors={errors} message={type}/>
-  //         // </div>
-  //       )}
-  //     </div>
-  //   );
-  // }
 
   displayErrors() {
     const {errors} = this.state;
@@ -95,6 +81,7 @@ class New extends Component {
     console.log(this.state)
     const {message} = this.state;
     return (
+      <div className='bg-light-blue custom-height' >
       <div className="container ">
         <h3 className="py-3 text-center">Create a poll</h3>
         {this.displayErrors()}
@@ -162,6 +149,7 @@ class New extends Component {
 
           </form>
         )}
+      </div>
       </div>
     );
   }

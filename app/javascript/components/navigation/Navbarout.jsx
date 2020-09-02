@@ -30,7 +30,7 @@ class Navbarout extends React.Component {
     return (
       <div>
         <nav className="navbar bg-darkest-blue">
-          <a className="navbar-brand font-weight-bold "
+          <a className="navbar-brand font-weight-bold hvr-itm-col-white"
              href={Routes.root_path()}>
             Pollz
           </a>
@@ -43,7 +43,7 @@ class Navbarout extends React.Component {
             </a>
             <a
               type="submit"
-              className="navbar-brand font-weight-bold"
+              className="navbar-brand font-weight-bold hvr-itm-col-white"
               onClick={this.handleLogout}>
 
               Logout

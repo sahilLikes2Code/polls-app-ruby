@@ -57,7 +57,7 @@ class New extends React.Component {
       <div>
         {errors && (
           // <div className="mt-4">
-            <Errors errors={errors} message={type}/>
+          <Errors errors={errors} message={type}/>
           // </div>
         )}
       </div>
@@ -68,49 +68,57 @@ class New extends React.Component {
   render() {
     const {message} = this.state;
     return (
+      <div className='bg-light-blue custom-height'>
+        <div className='font-weight-bolder'>
+          <h2 className="py-3 text-center ">Sign In</h2>
+          {this.displayErrors()}
+          {message ? (
+            <div className="alert alert-success">{message}</div>
+          ) : (
+            <form onSubmit={this.handleSubmit}>
 
-      <div className='font-weight-bolder'>
-        <h2 className="py-3 text-center ">Sign In</h2>
-        {this.displayErrors()}
-        {message ? (
-          <div className="alert alert-success">{message}</div>
-        ) : (
-          <form onSubmit={this.handleSubmit}>
-
-            <div className='d-flex flex-column align-items-center mb-3'>
-              <div className='w-50 mb-3' style={{margin: '0 auto'}}>
-                <label htmlFor="email">Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  name="email"
-                  onChange={this.handleChange}
-                />
+              <div className='d-flex flex-column align-items-center mb-3'>
+                <div className='w-50 mb-3' style={{margin: '0 auto'}}>
+                  <label htmlFor="email">Email address</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    name="email"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="w-50 mb-3" style={{margin: '0 auto'}}>
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="password"
+                    name="password"
+                    onChange={this.handleChange}
+                  />
+                </div>
               </div>
-              <div className="w-50 mb-3" style={{margin: '0 auto'}}>
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password"
-                  name="password"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
 
-          <div className='text-center'>
-            <div className='mb-3'>Don't have an account? Sign up<button
-              style={{background: "none", border: 'none', textDecoration: 'underline'}}
-              onClick={() => window.location.href = Routes.signup_path()}>here</button>
-            </div>
-            <button type="submit" className='text-crimson-red  bg-darkest-blue' >
-              Sign In
-            </button>
-          </div>
-          </form>
-        )}
+              <div className='text-center'>
+                <div className='mb-3'>Don't have an account? Sign up
+                  <button
+                    style={{
+                      background: "none",
+                      border: 'none',
+                      textDecoration: 'underline'
+                    }}
+                    onClick={() => window.location.href = Routes.signup_path()}>here
+                  </button>
+                </div>
+                <button type="submit"
+                        className='text-crimson-red  bg-darkest-blue'>
+                  Sign In
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
       </div>
     );
   }
@@ -120,29 +128,3 @@ class New extends React.Component {
 export default New;
 
 
-//
-// <div className="form-row">
-//   <div className="form-group col-md-4">
-//     <label htmlFor="email">Email address</label>
-//     <input
-//       type="email"
-//       className="form-control"
-//       id="email"
-//       name="email"
-//       onChange={this.handleChange}
-//     />
-//   </div>
-// </div>
-// <div className="form-row">
-//   <div className="form-group col-md-4">
-//     <label htmlFor="password">Password</label>
-//     <input
-//       type="password"
-//       className="form-control"
-//       id="password"
-//       name="password"
-//       onChange={this.handleChange}
-//     />
-//   </div>
-//
-// </div>
