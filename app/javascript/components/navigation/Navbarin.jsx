@@ -12,14 +12,16 @@ class Navbarin extends React.Component {
       <div>
         <nav className="navbar  bg-darkest-blue">
           <a className="navbar-brand font-weight-bold"
-             href={Routes.polls_path()}>
+             href={Routes.root_path()}>
             Pollz
           </a>
           <div>
-            <a className="navbar-brand font-weight-bold" href={Routes.login_path()}>
+            <a className="navbar-brand font-weight-bold"
+               href={Routes.login_path()}>
               Login
             </a>
-            <a className="navbar-brand font-weight-bold" href={Routes.signup_path()}>
+            <a className="navbar-brand font-weight-bold"
+               href={Routes.signup_path()}>
               Signup
             </a>
           </div>

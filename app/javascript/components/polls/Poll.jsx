@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {fetchApi} from "../../utils/API";
 import * as Routes from "../../utils/Routes";
 import Errors from "../shared/Error";
-
+import axios from 'axios'
 
 class Poll extends Component {
   constructor(props) {
@@ -33,26 +33,39 @@ class Poll extends Component {
 
 
   handleClick = async (e) => {
-    await this.setState({
-      vote: {
-        poll_id: Number(this.props.poll.poll_id),
-        option_id: Number(e.target.value),
-      }
-    })
 
-    fetchApi({
-      url: Routes.votes_path(),
-      method: "POST",
-      body: {
-        vote: this.state.vote
-      },
-      onError: this.handleError,
-      onSuccess: (response) => {
-        this.setState({message: response.messages});
-      //  fixme implement hot reload
-      window.location.href = Routes.polls_path()
-      },
-    });
+    try{
+      await this.setState({
+        vote: {
+          poll_id: Number(this.props.poll.poll_id),
+          option_id: Number(e.target.value),
+        }
+      })
+
+
+      // var response = await axios.post( Routes.votes_path(), {vote: this.state.vote})
+      // console.log('increase counter response in axios ', response)
+
+      await fetchApi({
+        url: Routes.votes_path(),
+        method: "POST",
+        body: {
+          vote: this.state.vote
+        },
+        onError: this.handleError,
+        onSuccess: (response) => {
+          this.setState({message: response.messages});
+          setTimeout( async () => {
+           await this.setState({message: null});
+          }, 3000)
+        },
+      });
+    }
+    catch {
+      console.log("in catch block")
+    }
+
+    this.props.fetchList()
   }
 
   displayErrors() {
@@ -70,7 +83,7 @@ class Poll extends Component {
   }
 
   render() {
-    console.log('poll propz', this.props)
+    // console.log('poll propz', this.props)
     const currentUser = this.props.current_user
     const {message} = this.state;
     const loggedIn = Boolean(currentUser);
@@ -94,7 +107,7 @@ class Poll extends Component {
         <ul style={{paddingInlineStart: 0}}>
           {poll.options.map(option => {
             if (loggedIn && voterIds.includes(currentUser.user_id)) {
-              console.log('voted')
+              // console.log('voted')
               return (
                 <li key={option.id} style={{listStyle: 'none'}}>
                   <button style={optionsButtonStyle}
@@ -111,7 +124,7 @@ class Poll extends Component {
                   <button value={option.id}
                           onClick={this.handleClick}
                           style={optionsButtonStyle}>{option.value}</button>
-                  <span style={{display: 'none'}}>{option.vote_count}</span>
+                  {/*<span style={{display: 'none'}}>{option.vote_count}</span>*/}
                   {/*{option.vote_count && <span>{option.vote_count}<span>}*/}
                 </li>
               )
@@ -149,6 +162,7 @@ class Poll extends Component {
           {/*  <span>My vote: {currentUser.my_vote}</span>*/}
           {/*</div>}*/}
         </div>
+        {/*<button onClick={this.props.fetchList}>fetch state filling props</button>*/}
       </div>
     )
   }

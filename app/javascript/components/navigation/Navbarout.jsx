@@ -31,7 +31,7 @@ class Navbarout extends React.Component {
       <div>
         <nav className="navbar bg-darkest-blue">
           <a className="navbar-brand font-weight-bold "
-             href={Routes.polls_path()}>
+             href={Routes.root_path()}>
             Pollz
           </a>
           {/*<a className="navbar-brand font-weight-bold" href={Routes.create_polls_path()}>*/}

@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
   def new
     if logged_in?
-      redirect_to polls_path
+      redirect_to root_path
     else
       render
     end

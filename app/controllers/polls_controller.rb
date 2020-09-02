@@ -4,10 +4,10 @@ class PollsController < ApplicationController
     if logged_in?
       current_user
     end
-    
     @polls = Poll.all
-    puts @polls.inspect
+    # render status: :ok, json: {notice: 'Polls list', polls: @polls}
   end
+
 
   def new
     if logged_in?

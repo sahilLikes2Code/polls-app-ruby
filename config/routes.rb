@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'polls#index'
+  root 'pages#index'
   get '/login', to: 'sessions#new'
   delete '/logout', to: 'sessions#destroy'
   delete '/user/delete', to: 'users#destroy'

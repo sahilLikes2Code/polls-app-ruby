@@ -41,7 +41,7 @@ class New extends Component {
   }
 
   handleSubmit = (event) => {
-    console.log('clickedd')
+
     event.preventDefault();
     fetchApi({
       url: Routes.polls_path(),
@@ -59,7 +59,7 @@ class New extends Component {
         this.setState({message: response.messages});
       },
       successCallBack: () => {
-        window.location.href = Routes.polls_path()
+        window.location.href = Routes.root_path()
       },
     });
   };
