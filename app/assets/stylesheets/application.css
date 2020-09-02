@@ -22,9 +22,9 @@
     --crimson-red: #EE6B4D;
 }
 
-body {
-    background-color: var(--light-blue);
-}
+/*body {*/
+/*    background-color: var(--light-blue);*/
+/*}*/
 
 .bg-darkest-blue {
     background-color: var(--darkest-blue);
