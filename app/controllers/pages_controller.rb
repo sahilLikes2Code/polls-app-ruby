@@ -4,5 +4,6 @@ class PagesController < ApplicationController
       current_user
     end
     @polls = Poll.all
+    
   end
 end
