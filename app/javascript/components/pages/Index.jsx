@@ -46,35 +46,40 @@ class Index extends Component {
     const currentUser = this.props.current_user
     const imageStyle = {width: '55%', marginTop: '20px'}
 
-    return <div className='text-center wrapper font-weight-bold text-crimson-red'>
-      <div className='pt-5'>
-        {/*display this if no polls exist*/}
-        {(listOfPolls.length === 0) &&
-        <div>
-          <img style={imageStyle} src={ballotBoxImage}
-               alt='ballot-box'/>
-          <h3 className="py-3 ">No polls published yet</h3>
-        </div>}
+    return (
+      <div className='bg-light-blue custom-height'>
+        <div className='text-center wrapper font-weight-bold text-crimson-red'>
+          <div className='pt-5'>
+            {/*display this if no polls exist*/}
+            {(listOfPolls.length === 0) &&
+            <div>
+              <img style={imageStyle} src={ballotBoxImage}
+                   alt='ballot-box'/>
+              <h3 className="py-3 ">No polls published yet</h3>
+            </div>}
 
-        {/*display this if user not logged in*/}
-        {(currentUser === undefined) &&
-        <h4 className=''>Login or signup to
-          create/vote in a poll</h4>}
+            {/*display this if user not logged in*/}
+            {(currentUser === undefined) &&
+            <h4 className=''>Login or signup to
+              create/vote in a poll</h4>}
 
-        {/*display prompt to create poll if user logged in*/}
-        {(currentUser) &&
-        <div>
-          <a className="navbar-brand text-crimson-red"
-             href={Routes.create_polls_path()}>
-            <h2> Create a new poll</h2>
-          </a>
+            {/*display prompt to create poll if user logged in*/}
+            {(currentUser) &&
+            <div>
+              <a className="navbar-brand text-crimson-red "
+                 href={Routes.create_polls_path()}>
+                <h2 className='hover-color-white'> Create a new poll</h2>
+              </a>
+            </div>
+            }
+
+            {/*display polls*/}
+            <div
+              className='pt-3 text-left font-weight-bolder text-darkest-blue'>{this.polls()}</div>
+          </div>
         </div>
-        }
-
-        {/*display polls*/}
-        <div className='pt-3 text-left font-weight-bolder text-darkest-blue'>{this.polls()}</div>
       </div>
-    </div>
+    )
   }
 }
 

@@ -63,16 +63,24 @@
 
 /* general */
 
-body {
-    background-color: var(--light-blue);
-}
+/*body {*/
+/*    background-color: var(--light-blue);*/
+/*}*/
 
 nav a {
     color: var(--light-blue)
 }
 
-button:hover, a:hover {
-    color: white
+/*button:hover, a:hover {*/
+/*    color: white*/
+/*}*/
+
+.hover-color-white:hover {
+    color: white;
+}
+
+.custom-height {
+    height: calc(100vh - 56px);
 }
 
 .wrapper {

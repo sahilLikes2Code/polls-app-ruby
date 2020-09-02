@@ -83,74 +83,76 @@ class New extends Component {
   render() {
     const {message} = this.state;
     return (
-      <div className="container text-center font-weight-bold">
-        <h3 className="py-3">Create a poll</h3>
-        {/*display errors if any*/}
-        {this.displayErrors()}
+      <div className='bg-light-blue custom-height'>
+        <div className="container text-center font-weight-bold">
+          <h3 className="py-3">Create a poll</h3>
+          {/*display errors if any*/}
+          {this.displayErrors()}
 
-        {/*display success message and user input form */}
-        {message ? (
-          <div className="alert alert-success">{message}</div>
-        ) : (
-          <form onSubmit={this.handleSubmit}>
-            <div className='d-flex flex-column align-items-center mb-3'>
-              <div className='w-50 mb-3'>
-                <label htmlFor="question">Question</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="question"
-                  name="question"
-                  onChange={this.setQuestion}
-                />
+          {/*display success message and user input form */}
+          {message ? (
+            <div className="alert alert-success">{message}</div>
+          ) : (
+            <form onSubmit={this.handleSubmit}>
+              <div className='d-flex flex-column align-items-center mb-3'>
+                <div className='w-50 mb-3'>
+                  <label htmlFor="question">Question</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="question"
+                    name="question"
+                    onChange={this.setQuestion}
+                  />
+                </div>
+                <div className='w-50 mb-3'>
+                  <label htmlFor="option1">Option 1</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="option1"
+                    name="0"
+                    onChange={this.setOption}
+                  />
+                </div>
+                <div className='w-50 mb-3'>
+                  <label htmlFor="option2">Option 2</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="option2"
+                    name="1"
+                    onChange={this.setOption}
+                  />
+                </div>
+                <div className='w-50 mb-3'>
+                  <label htmlFor="option3">Option 3</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="option3"
+                    name="2"
+                    onChange={this.setOption}
+                  />
+                </div>
+                <div className='w-50 mb-3'>
+                  <label htmlFor="option4">Option 4</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="option4"
+                    name="3"
+                    onChange={this.setOption}
+                  />
+                </div>
               </div>
-              <div className='w-50 mb-3'>
-                <label htmlFor="option1">Option 1</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="option1"
-                  name="0"
-                  onChange={this.setOption}
-                />
-              </div>
-              <div className='w-50 mb-3'>
-                <label htmlFor="option2">Option 2</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="option2"
-                  name="1"
-                  onChange={this.setOption}
-                />
-              </div>
-              <div className='w-50 mb-3'>
-                <label htmlFor="option3">Option 3</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="option3"
-                  name="2"
-                  onChange={this.setOption}
-                />
-              </div>
-              <div className='w-50 mb-3'>
-                <label htmlFor="option4">Option 4</label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="option4"
-                  name="3"
-                  onChange={this.setOption}
-                />
-              </div>
-            </div>
-            <button type="submit"
-                    className='text-crimson-red bg-darkest-blue'>
-              Create
-            </button>
-          </form>
-        )}
+              <button type="submit"
+                      className='text-crimson-red bg-darkest-blue'>
+                Create
+              </button>
+            </form>
+          )}
+        </div>
       </div>
     );
   }

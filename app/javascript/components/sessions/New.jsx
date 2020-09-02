@@ -67,57 +67,58 @@ class New extends React.Component {
 
   render() {
     const {message} = this.state;
-    const buttonStyle ={
+    const buttonStyle = {
       background: "none",
       border: 'none',
       textDecoration: 'underline'
     }
     return (
+      <div className='bg-light-blue custom-height'>
+        <div className='font-weight-bolder'>
+          <h2 className="py-3 text-center">Sign In</h2>
+          {this.displayErrors()}
+          {message ? (
+            <div className="alert alert-success">{message}</div>
+          ) : (
+            <form onSubmit={this.handleSubmit}>
 
-      <div className='font-weight-bolder'>
-        <h2 className="py-3 text-center">Sign In</h2>
-        {this.displayErrors()}
-        {message ? (
-          <div className="alert alert-success">{message}</div>
-        ) : (
-          <form onSubmit={this.handleSubmit}>
-
-            <div className='d-flex flex-column align-items-center mb-3'>
-              <div className='w-50 mb-3'>
-                <label htmlFor="email">Email address</label>
-                <input
-                  type="email"
-                  className="form-control"
-                  id="email"
-                  name="email"
-                  onChange={this.handleChange}
-                />
+              <div className='d-flex flex-column align-items-center mb-3'>
+                <div className='w-50 mb-3'>
+                  <label htmlFor="email">Email address</label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    name="email"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="w-50 mb-1">
+                  <label htmlFor="password">Password</label>
+                  <input
+                    type="password"
+                    className="form-control"
+                    id="password"
+                    name="password"
+                    onChange={this.handleChange}
+                  />
+                </div>
               </div>
-              <div className="w-50 mb-1">
-                <label htmlFor="password">Password</label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password"
-                  name="password"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
 
-            <div className='text-center'>
-              <button type="submit"
-                      className='text-crimson-red  bg-darkest-blue'>
-                Sign In
-              </button>
-            </div>
-          </form>
-        )}
-        <div className='mt-3 text-center'>Don't have an account? Sign up
-          <button
-            style={buttonStyle}
-            onClick={() => window.location.href = Routes.signup_path()}>here
-          </button>
+              <div className='text-center'>
+                <button type="submit"
+                        className='text-crimson-red  bg-darkest-blue'>
+                  Sign In
+                </button>
+              </div>
+            </form>
+          )}
+          <div className='mt-3 text-center'>Don't have an account? Sign up
+            <button
+              style={buttonStyle}
+              onClick={() => window.location.href = Routes.signup_path()}>here
+            </button>
+          </div>
         </div>
       </div>
     );
