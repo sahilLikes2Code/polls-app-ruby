@@ -107,15 +107,15 @@ class New extends React.Component {
 
               <div className='text-center'>
                 <button type="submit"
-                        className='text-crimson-red  bg-darkest-blue'>
+                        className='text-crimson-red  bg-darkest-blue py-1 px-2'>
                   Sign In
                 </button>
               </div>
             </form>
           )}
-          <div className='mt-3 text-center'>Don't have an account? Sign up
-            <button
+          <div className='mt-3 text-center'>Don't have an account? Sign up<button
               style={buttonStyle}
+              className='hover-color-white pleft-5'
               onClick={() => window.location.href = Routes.signup_path()}>here
             </button>
           </div>

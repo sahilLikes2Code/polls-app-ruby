@@ -48,7 +48,7 @@ class Index extends Component {
 
     return (
       <div className='bg-light-blue  height-inherit custom-mb'>
-        <div className='text-center wrapper font-weight-bold text-crimson-red'>
+        <div className='text-center wrapper font-weight-bold text-crimson-red custom-height'>
           <div className='pt-5'>
             {/*display this if no polls exist*/}
             {(listOfPolls.length === 0) &&

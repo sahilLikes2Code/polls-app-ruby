@@ -129,7 +129,7 @@ class New extends Component {
               </div>
               <div className='text-center'>
                 <button type="submit"
-                        className='text-crimson-red bg-darkest-blue'>
+                        className='text-crimson-red bg-darkest-blue py-1 px-2'>
                   Sign Up
                 </button>
               </div>

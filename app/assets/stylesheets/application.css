@@ -78,7 +78,7 @@ nav a {
 }
 
 .height-inherit {
-    height: inherit;
+    height: inherit
 }
 
 .wrapper {
@@ -93,6 +93,10 @@ nav a {
 
 .custom-mb {
     margin-bottom: -20px;
+}
+
+.pleft-5 {
+    padding-left: 5px;
 }
 
 /*body {*/
