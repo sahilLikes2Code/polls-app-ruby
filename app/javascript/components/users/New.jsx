@@ -74,7 +74,6 @@ class New extends Component {
     const {message} = this.state;
 
     return (
-      <div className='bg-light-blue custom-height'>
         <div className="container font-weight-bolder">
           <h3 className="py-3 text-center">Sign Up</h3>
           {/*display errors if any*/}
@@ -136,7 +135,6 @@ class New extends Component {
             </form>
           )}
         </div>
-      </div>
     );
   }
 }

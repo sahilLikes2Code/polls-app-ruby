@@ -83,7 +83,6 @@ class New extends Component {
   render() {
     const {message} = this.state;
     return (
-      <div className='bg-light-blue custom-height'>
         <div className="container text-center font-weight-bold">
           <h3 className="py-3">Create a poll</h3>
           {/*display errors if any*/}
@@ -147,13 +146,12 @@ class New extends Component {
                 </div>
               </div>
               <button type="submit"
-                      className='text-crimson-red bg-darkest-blue'>
+                      className='text-crimson-red bg-darkest-blue px-2 py-1'>
                 Create
               </button>
             </form>
           )}
         </div>
-      </div>
     );
   }
 }

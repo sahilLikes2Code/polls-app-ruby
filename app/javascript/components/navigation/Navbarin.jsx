@@ -12,16 +12,16 @@ class Navbarin extends React.Component {
     return (
       <nav
         className="navbar  bg-darkest-blue hvr-itm-col-white font-weight-bold ">
-        <a className="navbar-brand  hover-color-white"
+        <a className="navbar-brand"
            href={Routes.root_path()}>
           Pollz
         </a>
         <div>
-          <a className="navbar-brand  hover-color-white"
+          <a className="navbar-brand"
              href={Routes.login_path()}>
             Login
           </a>
-          <a className="navbar-brand  hover-color-white"
+          <a className="navbar-brand"
              href={Routes.signup_path()}>
             Signup
           </a>

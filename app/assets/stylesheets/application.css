@@ -69,13 +69,10 @@ nav a {
 }
 
 
-.hover-color-white:hover {
+a:hover, button:hover {
     color: white;
 }
 
-.custom-height {
-    height: calc(100vh - 56px);
-}
 
 .wrapper {
     width: 80%;
@@ -85,10 +82,6 @@ nav a {
 * {
     padding: 0;
     margin: 0;
-}
-
-.custom-mb {
-    margin-bottom: -20px;
 }
 
 .pleft-5 {

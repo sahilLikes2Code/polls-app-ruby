@@ -73,7 +73,6 @@ class New extends React.Component {
       textDecoration: 'underline'
     }
     return (
-      <div className='bg-light-blue custom-height'>
         <div className='font-weight-bolder'>
           <h2 className="py-3 text-center">Sign In</h2>
           {this.displayErrors()}
@@ -120,7 +119,6 @@ class New extends React.Component {
             </button>
           </div>
         </div>
-      </div>
     );
   }
 }

@@ -47,7 +47,6 @@ class Index extends Component {
     const imageStyle = {width: '55%', marginTop: '20px'}
 
     return (
-      <div className='bg-light-blue height-inherit custom-mb'>
         <div className='text-center wrapper font-weight-bold text-crimson-red '>
           <div className='pt-5'>
             {/*display this if no polls exist*/}
@@ -78,7 +77,6 @@ class Index extends Component {
               className='pt-3 text-left font-weight-bolder text-darkest-blue'>{this.polls()}</div>
           </div>
         </div>
-      </div>
     )
   }
 }
